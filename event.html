@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Events in js</title>
+  </head>
+  <body>
+    <center>
+      <form>
+        <label for="number">Enter a number</label>
+        <input type="text" id="number" /><br /><br /><br />
+        <p id="demo"></p>
+        <button type="button" onclick="prime()">Check_prime</button> &nbsp;
+        <button type="button" onclick="isEvenOdd()">
+          Generate even or odd
+        </button>
+        &nbsp;
+        <button type="button" onclick="fibo()">Generate fibo series</button>
+        &nbsp;
+      </form>
+    </center>
+    <script>
+      function isEvenOdd() {
+        var num = document.getElementById("number").value;
+        numb = parseInt(num);
+        console.log(numb);
+        if (num % 2 == 0) {
+          document.getElementById("demo").innerText = "EVEN";
+        } else {
+          document.getElementById("demo").innerText = "odd";
+        }
+      }
+      function prime() {
+        const num = document.getElementById("number").value;
+        let result = "";
+
+        if (isNaN(num) || num <= 1) {
+          result = "Please enter a valid positive integer greater than 1";
+        } else {
+          let isPrime = true;
+          for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+              isPrime = false;
+              break;
+            }
+          }
+
+          result = isPrime
+            ? `${num} is a prime number `
+            : `${num} is not a prime number`;
+        }
+        document.getElementById("demo").innerText = result;
+      }
+      function fibo() {
+        const numTerms = document.getElementById("number").value;
+        let result = " ";
+
+        if (isNaN(numTerms) || numTerms < 1) {
+          result = "please enter a valid positive number of terms";
+        } else {
+          let a = 0,
+            b = 1,
+            nextTerm;
+          for (let i = 1; i <= numTerms; i++) {
+            result += `${a} `;
+            nextTerm = a + b;
+            a = b;
+            b = nextTerm;
+          }
+        }
+        document.getElementById("demo").innerText = result;
+      }
+    </script>
+  </body>
+</html>

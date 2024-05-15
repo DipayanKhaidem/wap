@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCA Department Information</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>MCA Department Information</h2>
+
+    <h3>Faculty</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+      <tbody id="facultyTable"></tbody>
+    </table>
+
+    <h3>Students</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+      <tbody id="studentTable"></tbody>
+    </table>
+
+    <script>
+      // Accessing JSON data
+      const data = {
+        collegeName: "ABC College of Engineering",
+        affiliatedTo: "Visvesvaraya Technological University (VTU)",
+        department: "MCA",
+        faculty: [
+          {
+            name: "Dr. Rajesh Kumar",
+            designation: "Associate Professor",
+            email: "rajesh.kumar@example.com",
+            phone: "+91-9876543210",
+          },
+          {
+            name: "Dr. Priya Sharma",
+            designation: "Assistant Professor",
+            email: "priya.sharma@example.com",
+            phone: "+91-9876543211",
+          },
+          {
+            name: "Prof. Anil Singh",
+            designation: "Assistant Professor",
+            email: "anil.singh@example.com",
+            phone: "+91-9876543212",
+          },
+          {
+            name: "Dr. Sneha Gupta",
+            designation: "Professor",
+            email: "sneha.gupta@example.com",
+            phone: "+91-9876543213",
+          },
+          {
+            name: "Prof. Rahul Mehta",
+            designation: "Associate Professor",
+            email: "rahul.mehta@example.com",
+            phone: "+91-9876543214",
+          },
+        ],
+        students: [
+          {
+            name: "Amit Patel",
+            rollNo: "MCA101",
+            email: "amit.patel@example.com",
+            phone: "+91-1234567890",
+          },
+          {
+            name: "Neha Sharma",
+            rollNo: "MCA102",
+            email: "neha.sharma@example.com",
+            phone: "+91-1234567891",
+          },
+          {
+            name: "Rajesh Singh",
+            rollNo: "MCA103",
+            email: "rajesh.singh@example.com",
+            phone: "+91-1234567892",
+          },
+          {
+            name: "Priya Gupta",
+            rollNo: "MCA104",
+            email: "priya.gupta@example.com",
+            phone: "+91-1234567893",
+          },
+          {
+            name: "Kritika Verma",
+            rollNo: "MCA105",
+            email: "kritika.verma@example.com",
+            phone: "+91-1234567894",
+          },
+        ],
+      };
+
+      // Displaying faculty information
+      const facultyTable = document.getElementById("facultyTable");
+      data.faculty.forEach((faculty) => {
+        const row = facultyTable.insertRow();
+        row.insertCell().textContent = faculty.name;
+        row.insertCell().textContent = faculty.designation;
+        row.insertCell().textContent = faculty.email;
+        row.insertCell().textContent = faculty.phone;
+      });
+
+      // Displaying student information
+      const studentTable = document.getElementById("studentTable");
+      data.students.forEach((student) => {
+        const row = studentTable.insertRow();
+        row.insertCell().textContent = student.name;
+        row.insertCell().textContent = student.rollNo;
+        row.insertCell().textContent = student.email;
+        row.insertCell().textContent = student.phone;
+      });
+    </script>
+  </body>
+</html>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <contacts>
-  <person>
-    <name>John Doe</name>
-    <address>123 Main Street</address>
-    <email>john.doe@example.com</email>
-    <phone>123-456-7890</phone>
-  </person>
-  <person>
-    <name>Jane Smith</name>
-    <address>456 Elm Street</address>
-    <email>jane.smith@example.com</email>
-    <phone>987-654-3210</phone>
-  </person>
-  <person>
-    <name>Mike Lee</name>
-    <address>789 Oak Street</address>
-    <email>mike.lee@example.com</email>
-    <phone>555-123-4567</phone>
-  </person>
+    <person>
+        <name>John Doe</name>
+        <address>123 Main St, Cityville</address>
+        <email>john.doe@example.com</email>
+        <phone>123-456-7890</phone>
+    </person>
+    <person>
+        <name>Jane Smith</name>
+        <address>456 Oak Ave, Townsville</address>
+        <email>jane.smith@example.com</email>
+        <phone>987-654-3210</phone>
+    </person>
+    <person>
+        <name>Alice Johnson</name>
+        <address>789 Elm Rd, Villageton</address>
+        <email>alice.johnson@example.com</email>
+        <phone>555-555-5555</phone>
+    </person>
 </contacts>

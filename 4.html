@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack Implementation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #stack-container {
+        margin-top: 20px;
+      }
+      #stack {
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 200px;
+        height: 300px;
+        overflow-y: auto;
+      }
+      button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Stack Implementation</h2>
+
+    <div>
+      <label for="stack-input">Enter Element:</label>
+      <input type="text" id="stack-input" />
+      <button onclick="pushElement()">Push</button>
+    </div>
+
+    <div id="stack-container">
+      <h3>Stack:</h3>
+      <div id="stack"></div>
+      <button onclick="popElement()">Pop</button>
+      <button onclick="clearStack()">Clear Stack</button>
+    </div>
+
+    <script>
+      // Define stack array
+      let stack = [];
+
+      // Function to display stack
+      function displayStack() {
+        const stackElement = document.getElementById("stack");
+        stackElement.innerHTML = stack
+          .map((element, index) => `<div>${index + 1}. ${element}</div>`)
+          .join("");
+      }
+
+      // Function to push element onto stack
+      function pushElement() {
+        const inputElement = document.getElementById("stack-input");
+        const element = inputElement.value.trim();
+        if (element !== "") {
+          stack.push(element);
+          displayStack();
+          inputElement.value = "";
+        }
+      }
+
+      // Function to pop element from stack
+      function popElement() {
+        if (stack.length > 0) {
+          stack.pop();
+          displayStack();
+        } else {
+          alert("Stack is empty!");
+        }
+      }
+
+      // Function to clear stack
+      function clearStack() {
+        stack = [];
+        displayStack();
+      }
+
+      // Initial display of stack
+      displayStack();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Creation & DOM Events</title>
+  </head>
+  <body>
+    <h1>Product Showcase</h1>
+    <div id="product-container">
+      <p>Click on a product to see its details!</p>
+    </div>
+
+    <script>
+      // 1. Object literal (simple product)
+      const product1 = {
+          name: "T-Shirt",
+          price: 19.99,
+          brand: "Cool Threads"
+      };
+
+      // 2. Constructor function (complex product)
+      function Laptop(brand, model, price) {
+          this.brand = brand;
+          this.model = model;
+          this.price = price;
+          this.getInfo = function() {
+              return `${this.brand} ${this.model} - Price: $${this.price}`;
+          }
+      }
+
+      const laptop1 = new Laptop("Acer", "Nitro 5", 799.99);
+
+      // 3. Nested object (product with reviews)
+      const product2 = {
+          name: "Headphones",
+          price: 49.99,
+          brand: "Audiophile",
+          reviews: [
+              { rating: 5, comment: "Excellent sound quality!" },
+              { rating: 4, comment: "Great value for the price." }
+          ]
+      };
+
+      // Function to display product details
+      function displayProductDetails(product) {
+          let details = `<h2>${product.name}</h2>`;
+          details += `<p>Price: $${product.price}</p>`;
+          if (product.brand) {
+              details += `<p>Brand: ${product.brand}</p>`;
+          }
+          if (product.reviews) {
+              details += `<h3>Reviews:</h3>`;
+              for (const review of product.reviews) {
+                  details += `<p>Rating: ${review.rating}, Comment: ${review.comment}</p>`;
+              }
+          }
+          document.getElementById("product-container").innerHTML = details;
+      }
+
+      // DOM Events - Click on product name to display details
+      const productNames = document.querySelectorAll(".product-name");
+      productNames.forEach(name => {
+          name.addEventListener("click", function() {
+              const clickedProductId = this.dataset.productId; // Assuming product id is stored in data-attribute
+              const productToDisplay = getProductById(clickedProductId); // Simulate fetching product by ID
+              displayProductDetails(productToDisplay);
+          });
+      });
+
+      // Function to simulate fetching product by ID (replace with actual data fetching logic)
+      function getProductById(productId) {
+          if (productId === "product1") {
+              return product1;
+          } else if (productId === "laptop1") {
+              return laptop1;
+          } else if (productId === "product2") {
+              return product2;
+          } else {
+              return null;
+          }
+      }
+
+      // Example product elements with data-attribute for product ID
+      <p class="product-name" data-product-id="product1">T-Shirt</p>
+      <p class="product-name" data-product-id="laptop1">Acer Nitro 5</p>
+      <p class="product-name" data-product-id="product2">Headphones</p>
+    </script>
+  </body>
+</html>

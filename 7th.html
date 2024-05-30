@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+  </head>
+  <body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="number">Number:</label>
+        <input type="text" id="number" name="number" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <small
+          >Password must be at least 6 characters long and contain at least one
+          uppercase letter, one lowercase letter, and one digit.</small
+        >
+      </div>
+      <div>
+        <label for="dob">DOB:</label>
+        <input type="date" id="dob" name="dob" required />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      // Form validation
+      const form = document.getElementById("registrationForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const number = document.getElementById("number").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const dob = document.getElementById("dob").value;
+
+        // Regular expressions for validation
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        const numberRegex = /^\d{10}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.*\d).{6,}$/;
+
+        if (!nameRegex.test(name)) {
+          alert("Please enter a valid name.");
+          return;
+        }
+
+        if (!numberRegex.test(number)) {
+          alert("Please enter a valid 10-digit number.");
+          return;
+        }
+
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+
+        if (!passwordRegex.test(password)) {
+          alert(
+            "Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one digit."
+          );
+          return;
+        }
+
+        // Additional validation for date of birth
+        const currentDate = new Date();
+        const selectedDate = new Date(dob);
+
+        if (selectedDate >= currentDate) {
+          alert("Please select a valid date of birth.");
+          return;
+        }
+
+        // If all validations pass, submit the form
+        alert("Form submitted successfully!");
+        // Uncomment the line below to actually submit the form
+        form.submit();
+      });
+    </script>
+  </body>
+</html>
